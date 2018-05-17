@@ -6,6 +6,10 @@ html {
   background-size: cover;
 }
 
+.error-span{
+	color:red;
+}
+
 .parent{
 	transform: translateY(100%);
 }

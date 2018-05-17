@@ -10,7 +10,8 @@ class Login extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			login: false
+			login: false,
+			error: false
 		}
 	}
 
@@ -26,13 +27,17 @@ class Login extends React.Component {
     .then( response =>  {
       console.log(response)
       if(response.data === "Error"){	
-  			this.setState({login: false})
+  			this.setState({login: false, error: true})
+  			this.refs.login.value = "" 
+  			this.refs.pass.value = ""
       }else{
-  			this.setState({login: true})
+  			this.setState({login: true, error: false})
       }
     })
     .catch( error => {
-      console.log(error);
+		this.setState({login: false, error: true})
+		this.refs.login.value = "" 
+		this.refs.pass.value = ""
     });
 
 
@@ -59,7 +64,8 @@ class Login extends React.Component {
 							<label>PASSWORD</label>
 							<input className="input-login" type="password" ref="pass" />
 							<Button className="login-button" type="submit"> login </Button>
-
+							<br />
+							{ this.state.error && <span className="error-span">Credenciales no validas</span>}
 							<div class="form-login-footer">
 		                        <p>Developed by <br/>
 		                            <a href="https://ines.es/"> INES Ingenieros Consultores</a>

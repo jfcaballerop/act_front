@@ -9,12 +9,12 @@ class MenuActuacions extends React.Component {
 
 	render() {
 		return (
-			<SideNav
+			<SideNav className="menu-lateral"
 			  trigger={<Button className="button-nav">Menu</Button>}
 			  options={{ closeOnClick: true }}
 			  >
-			  <label>Actuaciones</label>
-			  <SideNavItem divider />
+			  <label className="title-menu-options">Actuaciones</label>
+			  <SideNavItem  divider />
 			  <ListaActuacions tipo="obra" />
 			  <ListaActuacions tipo="ext" />
 			  <ListaActuacions tipo="ord" />
