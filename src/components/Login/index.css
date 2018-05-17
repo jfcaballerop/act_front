@@ -86,3 +86,13 @@ html {
 		width: 90%;
 	}
 }
+
+@media (max-width: 600px) {
+	html{
+		height: 100%;
+	}
+
+	.form_login {
+		width: 90%;
+	}
+}
