@@ -1,0 +1,13 @@
+.gmaps{
+	width: 100% !important;
+	height: 100% !important;
+	z-index: 0;
+}
+
+.spinner-map-gif{
+	display: inline-block;
+	position: absolute;
+	top:50vh;
+	left:90vh;
+	
+}

@@ -1,0 +1,17 @@
+.containerMain{
+	margin: none;
+	display: flex;
+	flex-flow:row;
+    height: 100%;
+}
+
+.menu{
+	width:0%;
+	z-index: 9999;
+	background: #404346;
+	
+}
+
+.mapa{
+	width:100%;
+}

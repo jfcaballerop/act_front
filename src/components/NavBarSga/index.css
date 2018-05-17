@@ -1,0 +1,55 @@
+.navBar{
+    height: 41px !important;
+    background: #2d3032;
+    display: flex;
+
+}
+
+.spanNavBar{
+	width:auto;
+	margin: 0;
+}
+
+.logo-navbar{
+	width: 10%;
+}
+
+.disconnect-icon{
+	color:red;
+	width: 500px;
+	z-index: 9999;
+}
+
+.button-home-user{
+	display: flex;
+	width: auto;
+    height: 41px;
+    margin: auto 10px;
+	right: 0px;
+	position: absolute;
+}
+
+.button-home-user-icon {
+	color:#ff7d36;
+	cursor:pointer;
+	transform: translateY(-8px);
+
+}
+
+.button-home-user-text {
+	color:#ff7d36;
+	cursor:pointer;
+	transform: translateY(-10px);
+
+}
+
+#dropdown_0{
+	color:#ff7d36;
+	background:#303435;
+	width: auto !important;
+	transform: translateY(50px);
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+	color:#ff7d36;
+}

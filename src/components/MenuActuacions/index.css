@@ -1,0 +1,25 @@
+.tab-menu{
+    background: #404346;
+    display: flex;
+}
+
+.tab-actuaciones { 
+	background: red;
+}
+
+.tabs .tab a, .tabs .tab a.active {
+	color: white;
+}
+
+.button-nav{
+	z-index:99999;
+    background: #2d3032;
+	transform: rotate(270deg) translate(-40px,-35px);
+    color:#ff7d36;
+
+}
+
+.button-nav:hover {
+    background: #404346;
+    color:#fff;
+}
