@@ -1,5 +1,5 @@
 import React from 'react';
-import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+import {Gmaps} from 'react-gmaps';
 import {Row, Col, Preloader} from 'react-materialize'
 import './index.css';
 

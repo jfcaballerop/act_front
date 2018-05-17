@@ -1,7 +1,7 @@
 import React from 'react';
 import {SideNav,
 Button,
-SideNavItem,Icon} from 'react-materialize'
+SideNavItem} from 'react-materialize'
 import './index.css';
 import ListaActuacions from '../Modals/ListaActuacion'
 

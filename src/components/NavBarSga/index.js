@@ -1,9 +1,6 @@
 import React from 'react';
-import {nav, Dropdown, NavItem, Button,Icon} from 'react-materialize'
+import {nav, Dropdown, NavItem, Icon} from 'react-materialize'
 import Logo from '../../assets/images/logo_header.png';
-import Cancel from '../../assets/images/icon.svg';
-import UserPanel from '../UserPanel/'; 
-import ReactSVG from 'react-svg'
 import './index.css';
 
 const userlogged = {
