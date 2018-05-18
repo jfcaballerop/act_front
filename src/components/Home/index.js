@@ -13,7 +13,7 @@ class Home extends React.Component {
 		return (
 	      <div className="bloque">
 	        <NavBarSga />
-	        <ContainerMain menu={<MenuActuacions />} mapa={<Mapa />}/>
+	        <ContainerMain mapa={<Mapa />}/>
 	      </div>
 		);
 	}

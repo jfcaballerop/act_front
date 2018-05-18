@@ -21,9 +21,9 @@ class ListaActuacion extends React.Component {
 		if(this.state.tipo === "obra"){
 			this.setState({lista: lista_obr, titulo: "Obra"})
 		}else if(this.state.titulo === "ext"){
-			this.setState({lista: lista_ext, titulo: "Conservacion Extraordinaria"})
+			this.setState({lista: lista_ext, titulo: "Conservación Extraordinaria"})
 		}else{
-			this.setState({lista: lista_ord, titulo: "Conservacion Ordinaria"})
+			this.setState({lista: lista_ord, titulo: "Conservación Ordinaria"})
 		}
 	
 	}
@@ -32,7 +32,7 @@ class ListaActuacion extends React.Component {
 		return (
 		<Modal
 		header={this.state.titulo}
-		trigger={<SideNavItem href='#!icon' icon='assignment'>{this.state.titulo}</SideNavItem>}>
+		trigger={<SideNavItem href='#!icon'>{this.state.titulo}</SideNavItem>}>
 			<InfoModal items={this.state.lista} />
 		</Modal>
 		);

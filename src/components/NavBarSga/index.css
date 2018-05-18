@@ -1,6 +1,6 @@
 .navBar{
     height: 41px !important;
-    background: #2d3032;
+    background: #37494f;
     display: flex;
 
 }
@@ -30,27 +30,49 @@
 	position: absolute;
 }
 
+
+.button-home-user2{
+	display: flex;
+	width: 20%;
+    height: 41px;
+    margin: auto 10px;
+	right: 0px;
+	position: absolute;
+}
+
+
 .button-home-user-icon {
-	color:#ff7d36;
+	color:#fff;
 	cursor:pointer;
 	transform: translateY(-8px);
 
 }
 
 .button-home-user-text {
-	color:#ff7d36;
+	color:#fff;
 	cursor:pointer;
 	transform: translateY(-10px);
+		font-weight: 900;
+
 
 }
 
 #dropdown_0{
 	color:#ff7d36;
-	background:#303435;
+	background:#37494f;
 	width: auto !important;
-	transform: translateY(50px);
+	transform: translateY(51px);
+
+}
+
+#dropdown_4{
+	color:#ff7d36;
+	background:#37494f;
+	width: auto !important;
+	transform: translateY(51px);
+
 }
 
 .dropdown-content li>a, .dropdown-content li>span {
-	color:#ff7d36;
+	color:#fff;
 }

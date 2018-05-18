@@ -15,9 +15,7 @@ class MenuActuacions extends React.Component {
 			  >
 			  <label className="title-menu-options">Actuaciones</label>
 			  <SideNavItem  divider />
-			  <ListaActuacions tipo="obra" />
-			  <ListaActuacions tipo="ext" />
-			  <ListaActuacions tipo="ord" />
+
 
 			</SideNav>
 		);
