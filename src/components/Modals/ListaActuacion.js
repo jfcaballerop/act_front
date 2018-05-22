@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal,SideNavItem } from 'react-materialize'
+import { Modal,SideNavItem, Icon } from 'react-materialize'
 import InfoModal from './Info'
 
 const lista_ord = ["act1","act2","act3"]
@@ -20,7 +20,8 @@ class ListaActuacion extends React.Component {
 	componentWillMount = () => {
 		if(this.state.tipo === "obra"){
 			this.setState({lista: lista_obr, titulo: "Obra"})
-		}else if(this.state.titulo === "ext"){
+		}else if(this.state.tipo === "ext"){
+			console.log("entra")
 			this.setState({lista: lista_ext, titulo: "Conservación Extraordinaria"})
 		}else{
 			this.setState({lista: lista_ord, titulo: "Conservación Ordinaria"})
@@ -30,11 +31,12 @@ class ListaActuacion extends React.Component {
 
 	render() {
 		return (
-		<Modal
-		header={this.state.titulo}
-		trigger={<SideNavItem href='#!icon'>{this.state.titulo}</SideNavItem>}>
-			<InfoModal items={this.state.lista} />
-		</Modal>
+			<Modal
+			header={this.state.titulo}
+			actions=""
+			trigger={<SideNavItem href='#!icon'><Icon>{this.props.icon}</Icon>{this.state.titulo}</SideNavItem>}>
+				<InfoModal items={this.state.lista} />
+			</Modal>
 		);
 	}
 }

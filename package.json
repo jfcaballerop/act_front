@@ -1,9 +1,10 @@
 {
-  "name": "prueba",
+  "name": "sga_front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "jwt-decode": "^2.2.0",
     "login-plus": "^1.4.7",
     "material-ui": "^0.20.0",
     "react": "^16.3.2",
