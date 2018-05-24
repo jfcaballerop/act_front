@@ -26,7 +26,7 @@ class ContentListAdmin extends React.Component {
 				this.setState({listaContenido: response.data})
 			}
 		});
-
+	}
 
 	render() {
 		return (
@@ -40,7 +40,6 @@ class ContentListAdmin extends React.Component {
 						<Button className="new-user-button" onClick={() => console.log(this.props.history.push('/administracion/users/new'))} type="submit" >Nuevo usuario</Button>
 					</div>
 					{ this.state.listaContenido ? <TableContainer lista={this.state.listaContenido}/> : "" }
-
 				</section>
 			</div>
 		);
