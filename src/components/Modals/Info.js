@@ -5,15 +5,19 @@ import { Table } from 'react-materialize'
 class Info extends React.Component {
 
 	constructor(props) {
+		console.log('constructor', props)
 		super(props);
 		this.state = {
-			lista: this.props.items
+			lista2: props.items
 		}
-		console.log('constructor')
+	}
+	componentDidMount() {
+		console.log('componentDidmount ', this.state)
 	}
 
+
 	render() {
-		console.log('modal', this.state.lista)
+		console.log('modal', this.state.lista2)
 
 		return (
 			<Table>
@@ -27,12 +31,12 @@ class Info extends React.Component {
 
 				<tbody>
 					{
-						this.props.items.map((item, index) => {
+						this.state.lista2.map((item, index) => {
 							return (
-								<tr>
-									<td key={index}>{index}</td>
-									<td key={item.code}> {item.code} </td>
-									<td key={item.desc}> {item.desc} </td>
+								<tr key={index}>
+									<td >{index}</td>
+									<td > {item.code} </td>
+									<td > {item.desc} </td>
 								</tr>
 							)
 						})
