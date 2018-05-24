@@ -43,7 +43,7 @@ class NavBarSga extends React.Component {
 							  <li className="item-button-home-user2"><ListaActuacions icon="filter_3" tipo="ext" /></li>
 							</Dropdown>
 						</div> : <ul className="button-home-user-text">
-								<li><a className="link-admin-nav" href="administracion/user">Usuarios</a></li>
+								<li><a className="link-admin-nav" href="administracion/users">Usuarios</a></li>
 							</ul>				
 					}
 					<div className="button-home-user">
@@ -53,7 +53,7 @@ class NavBarSga extends React.Component {
 						    	<div className="button-home-user-text">{userlogged.login}</div>
 						    </div>
 						  }>
-						  <NavItem className="item-button-home-user" href="/administracion/user"><Icon>settings</Icon>Administración</NavItem>
+						  <NavItem className="item-button-home-user" href="/administracion/users"><Icon>settings</Icon>Administración</NavItem>
 						  <NavItem className="item-button-home-user" href="/Home"><Icon>home</Icon>Home</NavItem>
 						  <NavItem className="item-button-home-user"><Icon>description</Icon>Documentación</NavItem>
 						  <NavItem className="item-button-home-user"><Icon>content_paste</Icon>Informes</NavItem>

@@ -5,27 +5,18 @@ import { Button } from 'react-materialize';
 import TableContainer from '../TableContainer';
 import ROUTESNAME from '../../services/routesName.js'
 
-
-
-const DATA = [
-    {
-        "_id": {
-            "$oid": "5b029cd2c7a6d60001b86c6b"
-        },
-        "login": "admin",
-        "name": "admin",
-        "password_digest": "$2a$10$V76TfqO4KyoHDBYtn5FiR.i5BIU8ZYh.W6mcYFmNJ/cmrWu92jPpq"
-    }
-]
-
 class ContentListAdmin extends React.Component {
 	
 	constructor(props){
 		super(props)
 		this.state = {
-			listaContenido: this.getUsersList()
+			listaContenido: ""
 		}
 		
+	}
+
+	componentDidMount(){
+		this.setState({listaContenido: this.getUsersList()})
 	}
 
 	getUsersList =  () =>{
@@ -46,9 +37,9 @@ class ContentListAdmin extends React.Component {
 							<label>filtar usuario: </label>
 							<input type="text" name="user_search" className="input-login"/>
 						</form>
-						<Button className="new-user-button" type = "submit" >Nuevo usuario</Button>
+						<Button className="new-user-button" onClick={() => console.log(this.props.history.push('/administracion/users/new'))} type="submit" >Nuevo usuario</Button>
 					</div>
-					<TableContainer lista={this.state.listaContenido}/>
+					{ this.state.listaContenido ? <TableContainer lista={this.state.listaContenido}/> : "" }
 				</section>
 			</div>
 		);

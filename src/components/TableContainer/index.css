@@ -1,3 +1,42 @@
-.table-users-admin tr th{
+.table-users-admin tr th,.table-users-admin tr td{
 	text-align: center;
+}
+
+.options-table-admin, .options-table-admin:hover, .options-table-admin:active, .options-table-admin:focus{
+	width: 170px !important;
+	font-size: 12px;
+	margin:auto;
+}
+
+.options-table-admin i, .options-table-admin:hover i, .options-table-admin:active i, .options-table-admin:focus i{
+	vertical-align: bottom;
+}
+
+.pagination{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagination li a, .pagination li i{
+	color:white;
+}
+
+.pagination i:hover{
+	color:#ff7744;
+	cursor: pointer;
+}
+
+.pagination li.active,.pagination li.hover{
+	background: #ff7744;
+}
+
+.tr-options-admin{
+    text-align: center;
+    margin: 0 auto;
+    display: inline;
+}
+
+.tr-options-admin td{
+	font-size: 150%;
 }

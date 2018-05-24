@@ -8,7 +8,8 @@ class AdminUser extends React.Component {
 		return (
 	      <div className="bloque">
 	        <NavBarSga administracion={true} />
-	        <ConentListAdmin />
+
+	        <ConentListAdmin history={this.props.history}/>
 	      </div>
 		);
 	}

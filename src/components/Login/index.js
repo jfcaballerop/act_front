@@ -25,7 +25,6 @@ class Login extends React.Component {
 
 		submit = event => {
 			event.preventDefault();
-			console.log(ROUTESNAME)
 			axios.post(ROUTESNAME.autenticate(),{
 				login: this.refs.login.value,
 				password: this.refs.pass.value

@@ -5,7 +5,7 @@ import Home from './Home'
 import AdminUser from './AdminUser'
 import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
-
+import Error404 from '../services/Error404'
 
 const history = createBrowserHistory()
 
@@ -29,9 +29,11 @@ class App extends Component {
     return (
       <Router history={history}>
       	<div>
-      		<Route exact path="/" component={Login}  />
+      		<Route exact path="/" component={Login} />
           <Route exact path="/Home" component={Home} />
-      		<Route exact path="/administracion/user" component={AdminUser}  />
+          <Route exact path="/administracion/users" component={AdminUser} />
+      		<Route exact path="/administracion/users/:method" component={AdminUser}/>
+          <Route component={Error404} />
       	</div>
       </Router>	
     );
