@@ -6,13 +6,13 @@ import TableContainer from '../TableContainer';
 import ROUTESNAME from '../../services/routesName.js'
 
 class ContentListAdmin extends React.Component {
-	
-	constructor(props){
+
+	constructor(props) {
 		super(props)
 		this.state = {
 			listaContenido: ""
 		}
-		
+
 	}
 
 	componentDidMount(){
@@ -26,7 +26,7 @@ class ContentListAdmin extends React.Component {
 				this.setState({listaContenido: response.data})
 			}
 		});
-	}
+
 
 	render() {
 		return (
@@ -35,11 +35,12 @@ class ContentListAdmin extends React.Component {
 					<div className="admin-user-container">
 						<form className="admin-user-form-container">
 							<label>filtar usuario: </label>
-							<input type="text" name="user_search" className="input-login"/>
+							<input type="text" name="user_search" className="input-login" />
 						</form>
 						<Button className="new-user-button" onClick={() => console.log(this.props.history.push('/administracion/users/new'))} type="submit" >Nuevo usuario</Button>
 					</div>
 					{ this.state.listaContenido ? <TableContainer lista={this.state.listaContenido}/> : "" }
+
 				</section>
 			</div>
 		);
