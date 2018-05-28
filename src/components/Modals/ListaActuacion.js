@@ -3,7 +3,7 @@ import { Button, Modal, SideNavItem, Icon } from 'react-materialize'
 import InfoModal from './Info'
 import axios from 'axios'
 import ROUTESNAME from '../../services/routesName.js'
-import './index.css';
+import '../Global/css/Modals.css';
 
 const lista_ord = []
 const lista_ext = []

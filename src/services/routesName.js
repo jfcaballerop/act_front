@@ -5,6 +5,9 @@ const ROUTESNAME = {
 	showusers: function () {
 		return "http://brooklyn-bridge.i3met.com:4000/users"
 	},
+	getuser: function (id) {
+		return "http://brooklyn-bridge.i3met.com:4000/users/"+id
+	},
 	getActConsOrd: function () {
 		return "http://brooklyn-bridge.i3met.com:4000/act_cons_ords"
 	},

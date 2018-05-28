@@ -1,7 +1,7 @@
 import React from 'react';
 import {Gmaps} from 'react-gmaps';
 import {Row, Col, Preloader} from 'react-materialize'
-import './index.css';
+import '../Global/css/Maps.css';
 
 const coords = {
   lat: 40.0000000,

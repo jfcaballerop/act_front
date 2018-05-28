@@ -15,7 +15,7 @@ class Home extends Component {
 		return (
 
 			<div className="content">
-				<Header />
+				<Header history={this.props.history}  administracion={false}/>
 				<Content />
 			</div>
 		);
