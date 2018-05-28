@@ -1,20 +1,23 @@
-import React from 'react';
-import NavBarSga from '../NavBarSga'
-import ContainerMain from '../ContainerMain';
-import Mapa from '../Maps';
-import './index.css'
+import React, { Component } from 'react';
+
+//Components
+import Header from '../Global/Header'
+import Content from '../Global/Content'
 
 
-class Home extends React.Component {
+
+
+class Home extends Component {
 
 
 
 	render() {
 		return (
-	      <div className="bloque">
-	        <NavBarSga history={this.props.history} administracion={false}/>
-	        <ContainerMain mapa={<Mapa />}/>
-	      </div>
+
+			<div className="content">
+				<Header />
+				<Content />
+			</div>
 		);
 	}
 }

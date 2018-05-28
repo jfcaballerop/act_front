@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+//Components
+// import Header from './Global/Header';
+
 import './App.css';
 import Login from './Login'
 import Home from './Home'
@@ -11,21 +15,21 @@ const history = createBrowserHistory()
 
 class App extends Component {
 
-    constructor(props) {
-      super(props)
-      this.state = {
-        session_user: sessionStorage.getItem('sessionUserSga')
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      session_user: sessionStorage.getItem('sessionUserSga')
     }
+  }
 
 
-    componentWillMount() {
-      if (!this.state.session_user) {
-        history.push('/')
-      }
+  componentWillMount() {
+    if (!this.state.session_user) {
+      history.push('/')
     }
+  }
 
-          /*<Route component={Error404} />*/
+  /*<Route component={Error404} />*/
   render() {
     return (
       <Router history={history}>
@@ -33,10 +37,10 @@ class App extends Component {
           <Route exact path="/" component={Login} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/administracion/users" component={AdminUser} />
-          <Route exact path="/administracion/users/:method" component={AdminUser}/>
-          <Route exact path="/administracion/users/:method/:id" component={AdminUser}/>
-      	</div>
-      </Router>	
+          <Route exact path="/administracion/users/:method" component={AdminUser} />
+          <Route exact path="/administracion/users/:method/:id" component={AdminUser} />
+        </div>
+      </Router>
     );
   }
 }
