@@ -1,8 +1,9 @@
 import React from 'react';
-import { Modal, SideNavItem, Icon } from 'react-materialize'
+import { Button, Modal, SideNavItem, Icon } from 'react-materialize'
 import InfoModal from './Info'
 import axios from 'axios'
 import ROUTESNAME from '../../services/routesName.js'
+import './index.css';
 
 const lista_ord = []
 const lista_ext = []
@@ -32,23 +33,6 @@ class ListaActuacion extends React.Component {
 			});
 	}
 
-	// componentWillMount = () => {
-
-
-
-	// 	if (this.state.tipo === "obra") {
-	// 		this.setState({ lista: lista_obr, titulo: "Obra" })
-	// 	} else if (this.state.tipo === "ext") {
-	// 		console.log("entra")
-	// 		this.setState({ lista: lista_ext, titulo: "Conservación Extraordinaria" })
-	// 	} else {
-	// 		this.getActConsOrdList()
-	// 		this.setState({ titulo: "Conservación Ordinaria" })
-	// 		console.log('State ListaActuacion1', this.state)
-	// 	}
-
-	// }
-
 	componentDidMount() {
 		if (this.state.tipo === "obra") {
 			this.setState({ lista: lista_obr, titulo: "Obra" })
@@ -67,7 +51,14 @@ class ListaActuacion extends React.Component {
 		return (
 			<Modal
 				header={this.state.titulo}
-				actions=""
+				fixedFooter
+				actions={
+					<div>
+						<Button flat modal="close" waves="light">Close</Button>
+						<Button modal="close" waves="light" className="boton red" ><Icon left>delete</Icon>delete</Button>
+						<Button modal="close" waves="light" className="boton amber darken-4" ><Icon left>add</Icon>Nuevo</Button>
+					</div>
+				}
 				trigger={<SideNavItem href='#!icon'><Icon>{this.props.icon}</Icon>{this.state.titulo}</SideNavItem>}>
 				{this.state.lista ? <InfoModal items={this.state.lista} /> : ""}
 			</Modal>
