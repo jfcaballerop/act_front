@@ -1,0 +1,29 @@
+.new-user-button-submit,.new-user-button-submit:hover,.new-user-button-submit:active,.new-user-button-submit:focus{
+	display: block;
+	margin: auto;
+	width: auto ;
+}
+
+h1{
+	text-align: center;
+}
+
+.admin-user-form-container-new{
+	width:100%;
+	text-align: center;
+	display: flex;
+	flex-flow: column;
+}
+
+.admin-user-form-container-new p {
+	font-size: 16px;
+	color:white;
+	text-align: center;
+}
+
+.input-field-admin {
+	width: 50% !important;
+	display: flex;
+	text-align:center;
+	margin: 10px auto !important;
+}

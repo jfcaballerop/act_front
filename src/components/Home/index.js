@@ -12,7 +12,7 @@ class Home extends React.Component {
 	render() {
 		return (
 	      <div className="bloque">
-	        <NavBarSga administracion={false}/>
+	        <NavBarSga history={this.props.history} administracion={false}/>
 	        <ContainerMain mapa={<Mapa />}/>
 	      </div>
 		);

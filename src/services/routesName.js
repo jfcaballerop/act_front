@@ -14,6 +14,9 @@ const ROUTESNAME = {
 				'Authorization': JSON.parse(sessionStorage.getItem(sessionName))["user"]["token"]
 			}
 		}
+	},
+	newuser: function () {
+		return "http://brooklyn-bridge.i3met.com:4000/users"
 	}
 }
 

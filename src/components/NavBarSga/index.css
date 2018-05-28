@@ -55,15 +55,7 @@
 	font-weight: 900;
 }
 
-#dropdown_0{
-	color:#ff7d36;
-	background:#37494f;
-	width: auto !important;
-	transform: translateY(41px);
-
-}
-
-#dropdown_4{
+.dropdown-content{
 	color:#ff7d36;
 	background:#37494f;
 	width: auto !important;

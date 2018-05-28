@@ -7,12 +7,17 @@ class TableContainer extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			lista: props.lista
+			lista: props.lista,
+			pagina: 1
 		}
 	}
 
+	changeList = page => {
+		this.setState({pagina: page})
+	}
 
 	render() {
+		let self = this
 		return (
 			<div>
 				<table className="table-users-admin">
@@ -23,14 +28,14 @@ class TableContainer extends Component {
 						<th>Roles</th>
 						<th colSpan="3">Opciones</th>
 					</tr>
-					{ this.state.lista.map((row,key) => 
+					{ this.state.lista.slice((this.state.pagina*6)- 6,(this.state.pagina*6)).map((row,key) => 
 						<tr key={key}>
 							<td>{row.login}</td>
 							<td>{row.name}</td>
-							<td>{row.role_ids.map((role) => role.$oid)}</td>
+							<td>{row.roles_val.map((role) => role.code)}</td>
 							<td colSpan="3">
 								<tr colSpan="3" className="tr-options-admin">
-									<td><Button className="new-user-button options-table-admin"><Icon>edit</Icon>Editar</Button></td> 
+									<td><Button className="new-user-button options-table-admin" onClick={() => this.props.history.push('/administracion/users/edit/'+row._id.$oid)}><Icon>edit</Icon>Editar</Button></td> 
 
 									<td>
 										<Modal
@@ -51,7 +56,7 @@ class TableContainer extends Component {
 					</tbody>
 				</table>
 				<footer className="pagination">
-					{ (this.state.lista.length > 1) ? <Pagination items={5} activePage={2} maxButtons={8} /> : "" }
+					{ (this.state.lista.length > 1) ? <Pagination items={(this.state.lista.length / 6)} onSelect={(page) => this.changeList(page)} activePage={this.state.pagina} maxButtons={8} /> : "" }
 				</footer>
 			</div>
 		);

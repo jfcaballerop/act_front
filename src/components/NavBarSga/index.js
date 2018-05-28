@@ -32,7 +32,7 @@ class NavBarSga extends React.Component {
 				<div>
 					{this.state.administracion === false ?
 						<div className="button-home-user2">
-							<Dropdown trigger={
+							<Dropdown className="dropdown-navbar" trigger={
 									<div className="bloque_dropdown">
 										<Icon className="button-home-user-icon">assignment</Icon>
 								    	<div className="button-home-user-text">Actuaciones</div>
@@ -43,18 +43,18 @@ class NavBarSga extends React.Component {
 							  <li className="item-button-home-user2"><ListaActuacions icon="filter_3" tipo="ext" /></li>
 							</Dropdown>
 						</div> : <ul className="button-home-user-text">
-								<li><a className="link-admin-nav" href="administracion/users">Usuarios</a></li>
+								<li className="link-admin-nav" onClick={() => this.props.history.push("/administracion/users")}>Usuarios</li>
 							</ul>				
 					}
 					<div className="button-home-user">
-						<Dropdown id="drop_user" trigger={
+						<Dropdown className="dropdown-navbar" id="drop_user" trigger={
 							<div className="bloque_dropdown">
 								<Icon className="button-home-user-icon">assignment_ind</Icon>
 						    	<div className="button-home-user-text">{userlogged.login}</div>
 						    </div>
 						  }>
-						  <NavItem className="item-button-home-user" href="/administracion/users"><Icon>settings</Icon>Administración</NavItem>
-						  <NavItem className="item-button-home-user" href="/Home"><Icon>home</Icon>Home</NavItem>
+						  <NavItem className="item-button-home-user" onClick={() => this.props.history.push("/administracion/users")}><Icon>settings</Icon>Administración</NavItem>
+						  <NavItem className="item-button-home-user" onClick={() => this.props.history.push("/home")}><Icon>home</Icon>Home</NavItem>
 						  <NavItem className="item-button-home-user"><Icon>description</Icon>Documentación</NavItem>
 						  <NavItem className="item-button-home-user"><Icon>content_paste</Icon>Informes</NavItem>
 						  <NavItem className="item-button-home-user" divider />
