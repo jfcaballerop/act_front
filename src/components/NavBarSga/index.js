@@ -14,7 +14,8 @@ class NavBarSga extends React.Component {
 		super(props)
 		this.state = {
 			logged: true,
-			administracion: props.administracion
+			administracion: props.administracion,
+			title: props.title
 		}
 	}
 
@@ -29,6 +30,8 @@ class NavBarSga extends React.Component {
 		return (
 			<nav className="navBar">
 				<img src={Logo} className="logo-navbar" alt="logo" />
+				<h4 className='vcenter'>{this.state.title}</h4>
+
 				<div>
 					{this.state.administracion === false ?
 						<div className="button-home-user2">

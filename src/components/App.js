@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 //Components
-// import Header from './Global/Header';
+import Content from './Global/Content';
+import Header from './Global/Header'
+import FooterApp from './Global/FooterApp'
+import './App.css'
 
-import './App.css';
-import Login from './Login'
-import Home from './Home'
-import AdminUser from './AdminUser'
-import { Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory'
 //import Error404 from '../services/Error404'
 
-const history = createBrowserHistory()
 
 class App extends Component {
 
@@ -22,25 +19,21 @@ class App extends Component {
     }
   }
 
+  static PropTypes = {
+    children: PropTypes.object.isRequired
+  };
 
-  componentWillMount() {
-    if (!this.state.session_user) {
-      history.push('/')
-    }
-  }
 
-  /*<Route component={Error404} />*/
+
   render() {
+    const { children } = this.props;
     return (
-      <Router history={history}>
-        <div>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/administracion/users" component={AdminUser} />
-          <Route exact path="/administracion/users/:method" component={AdminUser} />
-          <Route exact path="/administracion/users/:method/:id" component={AdminUser} />
-        </div>
-      </Router>
+      <div className="App">
+        <Header title="Login" />
+        <Content body={children} />
+        <FooterApp />
+      </div>
+
     );
   }
 }

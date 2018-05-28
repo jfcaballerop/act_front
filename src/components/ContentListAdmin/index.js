@@ -16,26 +16,26 @@ class ContentListAdmin extends React.Component {
 
 	}
 
-	componentDidMount(){
-		this.setState({listaContenido: this.getUsersList()})
+	componentDidMount() {
+		this.setState({ listaContenido: this.getUsersList() })
 	}
 
-	getUsersList =  () =>{
-		axios.get(ROUTESNAME.showusers(),ROUTESNAME.getSessionToken('sessionUserSga'))
-		.then((response) => {
-			if(response.status === 200){
-				this.setState({listaContenido: response.data})
-			}
-		});
+	getUsersList = () => {
+		axios.get(ROUTESNAME.showusers(), ROUTESNAME.getSessionToken('sessionUserSga'))
+			.then((response) => {
+				if (response.status === 200) {
+					this.setState({ listaContenido: response.data })
+				}
+			});
 	}
 
 	render() {
-		let self = this
+		// let self = this
 		return (
 			<div>
 				<section className="section-user">
 					<SearchHeader title="Filtrar usuario:" />
-					{ this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido}/> : "" }
+					{this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido} /> : ""}
 					<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new')} type="submit" >Nuevo usuario</Button>
 				</section>
 			</div>
