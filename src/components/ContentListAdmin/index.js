@@ -1,9 +1,8 @@
 import React from 'react';
-import './index.css';
+import '../Global/css/ContentListAdmin.css';
 import axios from 'axios';
 import { Button } from 'react-materialize';
 import TableContainer from '../TableContainer';
-import SearchHeader from '../Generics/SearchHeader';
 import ROUTESNAME from '../../services/routesName.js'
 
 class ContentListAdmin extends React.Component {
@@ -33,11 +32,8 @@ class ContentListAdmin extends React.Component {
 		// let self = this
 		return (
 			<div>
-				<section className="section-user">
-					<SearchHeader title="Filtrar usuario:" />
-					{this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido} /> : ""}
-					<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new')} type="submit" >Nuevo usuario</Button>
-				</section>
+				{ this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido}/> : "" }
+				<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new')} type="submit" >Nuevo usuario</Button>
 			</div>
 		);
 	}

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Pagination, Modal, Icon} from 'react-materialize';
-import './index.css';
+import '../Global/css/TableContainer.css';
+import axios from 'axios';
+import ROUTESNAME from '../../services/routesName.js'
+
 
 class TableContainer extends Component {
 
@@ -14,6 +17,29 @@ class TableContainer extends Component {
 
 	changeList = page => {
 		this.setState({pagina: page})
+	}
+
+	deleteItem = (item) =>{
+		axios.delete(ROUTESNAME.getuser(item._id.$oid),ROUTESNAME.getSessionToken('sessionUserSga'))
+		.then((response)=>{
+			if(response.status === 204){
+				var array = [...this.state.lista]; // make a separate copy of the array
+				var index = array.indexOf(item)
+				array.splice(index, 1);
+				window.Materialize.toast('Usuario borrado: ' + item.name, 4000)
+				this.setState({lista: array});
+			}
+		})
+	}
+
+	calcularPaginas = () => {
+		let paginas
+		if(this.state.lista.length % 6 === 0 && this.state.lista.length <= 6){
+			paginas = this.state.lista.length / 6
+		}else{
+			paginas = (this.state.lista.length / 6) + 1 
+		}
+		return paginas
 	}
 
 	render() {
@@ -42,7 +68,7 @@ class TableContainer extends Component {
 										  header="Borrando usuario" 
 										  actions={
 									  		<footer>
-									  			<Button className="new-user-button options-table-admin">Aceptar</Button>
+									  			<Button onClick={() => this.deleteItem(row) }className="new-user-button options-table-admin">Aceptar</Button>
 									  			<Button modal="close" className="new-user-button options-table-admin">Cancelar</Button>
 								  			</footer>}
 										  trigger={<Button className="new-user-button options-table-admin"><Icon>delete</Icon>borrar</Button>}>
@@ -56,7 +82,7 @@ class TableContainer extends Component {
 					</tbody>
 				</table>
 				<footer className="pagination">
-					{ (this.state.lista.length > 1) ? <Pagination items={(this.state.lista.length / 6)} onSelect={(page) => this.changeList(page)} activePage={this.state.pagina} maxButtons={8} /> : "" }
+					{ (this.state.lista.length > 1) ? <Pagination items={ this.calcularPaginas() } onSelect={(page) => this.changeList(page)} activePage={this.state.pagina} maxButtons={8} /> : "" }
 				</footer>
 			</div>
 		);

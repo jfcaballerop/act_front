@@ -21,7 +21,7 @@ class Header extends React.Component {
 
         return (
             <div className="Header">
-                <NavBarSga title={title} history={this.props.history} administracion={false} />
+                <NavBarSga title={title}  history={this.props.history} administracion={this.props.administracion} />
             </div>
         );
     }

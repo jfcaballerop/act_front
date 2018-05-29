@@ -2,24 +2,66 @@ import React from 'react';
 import NavBarSga from '../NavBarSga'
 import ConentListAdmin from '../ContentListAdmin'
 import ConentNewUpdateAdmin from '../ContentNewUpdateAdmin'
+import ContentData from '../ContentData'
+import SearchHeader from '../Generics/SearchHeader';
+import Header from '../Global/Header';
+import axios from 'axios';
+import ROUTESNAME from '../../services/routesName.js'
 
 class AdminUser extends React.Component {
 
-	getComponentAdmin = () => {
-		if (this.props.match.params.method === "new")
-			return <ConentNewUpdateAdmin history={this.props.history} />
-		else if (this.props.match.params.method === "edit")
-			return <ConentNewUpdateAdmin history={this.props.history} user={this.props.user} />
-		else
-			return <ConentListAdmin history={this.props.history} />
+	constructor(props){
+		super(props)
+		this.state = {
+			objeto: 0
+		}	
+	}
 
+	getComponentAdmin = () => {
+		let header, footer, body, objeto
+		if (this.props.match.params.id != undefined){
+			header=<h1>- Editar usuario -</h1>
+			axios.get(ROUTESNAME.getuser(this.props.match.params.id),ROUTESNAME.getSessionToken('sessionUserSga'))
+				.then((response) => {
+					if(response.status === 200){
+						objeto = response.data
+						body = <ConentNewUpdateAdmin history={this.props.history} usuario={objeto} />
+						this.setState({objeto: 
+							<ContentData 
+								header={header}
+								body={body}
+								footer={footer}
+							/>
+							})
+					}
+				});
+				footer = ""
+
+		} else if (this.props.match.params.method === "new"){
+			header=<h1>- Nuevo usuario -</h1>
+			body =  <ConentNewUpdateAdmin history={this.props.history} />
+			footer = ""
+		}
+		else{
+			body = <ConentListAdmin history={this.props.history} />
+			header = <SearchHeader title="Filtrar usuario:" />
+			footer = ""
+		}
+
+		this.setState({objeto: 
+			<ContentData 
+				header={header}
+				body={body}
+				footer={footer}
+			/>
+			})
 	}
 
 	render() {
 		return (
 			<div className="content">
-				<NavBarSga administracion={true} history={this.props.history} />
-				{this.getComponentAdmin()}
+				<Header history={this.props.history} administracion={true}/>
+				{this.state.objeto === 0 ?  this.getComponentAdmin() : this.state.objeto }
 			</div>
 		);
 	}

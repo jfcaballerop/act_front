@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, NavItem, Icon } from 'react-materialize'
 import Logo from '../Global/images/logo_header.png';
 import ListaActuacions from '../Modals/ListaActuacion'
-import './index.css';
+import '../Global/css/NavBarSga.css';
 
 const userlogged = {
 	login: "Administrador"
