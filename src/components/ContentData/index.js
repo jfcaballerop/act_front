@@ -9,7 +9,7 @@ class ContentData extends React.Component {
 
 	render() {
 		return (
-			<div className="section-user">
+			<div className="section-data">
 				<header>{this.props.header}</header>
 				<section>{this.props.body}</section>
 				<footer>{this.props.footer}</footer>

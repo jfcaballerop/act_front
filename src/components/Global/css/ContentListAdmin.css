@@ -1,4 +1,4 @@
-.section-user{
+.section-data{
     max-width:90%;
    	height: 90vh;
     margin: 20px auto;
@@ -8,19 +8,19 @@
     background-color: #374b50;
 }
 
-.admin-user-container{
+.section-data-container{
 	display: flex;
 	width: 100%;
 }
 
-.admin-user-form-container{
+.section-data-form-container{
 	display: flex;
 	width: 20%;
 	margin: 10px;
 	
 }
 
-.admin-user-form-container label {
+.section-data-form-container label {
 	color:#fff;
 	font-weight: 999;
 	font-size: 14px;

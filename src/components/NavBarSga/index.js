@@ -44,7 +44,9 @@ class NavBarSga extends React.Component {
 								</div>
 							}>
 								<li className="item-button-home-user2"><ListaActuacions icon="filter_1" tipo="obra" /></li>
-								<li className="item-button-home-user2"><ListaActuacions icon="filter_2" tipo="ord" /></li>
+								<li className="item-button-home-user2"><NavItem className="item-button-home-user"
+									onClick={() => this.props.history.push("/actuaciones/cons_ord")}
+								><Icon>create</Icon>Cons. Ordinaria</NavItem></li>
 								<li className="item-button-home-user2"><ListaActuacions icon="filter_3" tipo="ext" /></li>
 							</Dropdown>
 						</div> : <ul className="button-home-user-text">
