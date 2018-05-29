@@ -39,8 +39,6 @@ class ContentNewUpdateAdmin extends React.Component {
 				window.Materialize.toast(error, 4000)
 			});
 		}else{
-			console.log(this.state.user)
-			/*
 			axios.put(ROUTESNAME.getuser(this.state.user.id.$oid),{user:{
 				name: this.refs.name.value,
 				login: this.refs.login.value,
@@ -51,10 +49,11 @@ class ContentNewUpdateAdmin extends React.Component {
 			.then( response => {
 				if (response.status === 200){
 					window.Materialize.toast('Usuario modificado con exito', 4000)
+					this.props.history.push('/administracion/users')
 				}
 			}).catch(error => {
 				window.Materialize.toast(error, 4000)
-			});*/
+			});
 		}
 		
 	}
@@ -96,7 +95,7 @@ class ContentNewUpdateAdmin extends React.Component {
 				          { value: 'admin', label: 'admin' },
 				        ]}
 				      />
-					<Button className="new-user-button new-user-button-submit" type="submit" >crear usuario</Button>
+					<Button className="new-user-button new-user-button-submit" type="submit" >{this.state.user ? "Actualizar usuario" : "Crear usuario"}</Button>
 				</form>
 			</div>
 		);
