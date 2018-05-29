@@ -5,7 +5,7 @@ import axios from 'axios'
 import ROUTESNAME from '../../services/routesName.js'
 import '../Global/css/Modals.css';
 
-const lista_ord = []
+// const lista_ord = []
 const lista_ext = []
 const lista_obr = []
 

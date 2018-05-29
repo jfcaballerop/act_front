@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
 //Components
-import Header from '../Global/Header'
-import Content from '../Global/Content'
+import ContainerMain from '../../components/ContainerMain'
+import Mapa from '../../components/Maps'
+
+
 
 
 
@@ -15,8 +16,8 @@ class Home extends Component {
 		return (
 
 			<div className="content">
-				<Header history={this.props.history}  administracion={false}/>
-				<Content />
+				<ContainerMain mapa={<Mapa />} />
+
 			</div>
 		);
 	}

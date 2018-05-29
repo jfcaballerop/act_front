@@ -1,5 +1,7 @@
 import React from 'react';
 import { Dropdown, NavItem, Icon } from 'react-materialize'
+import { withRouter } from 'react-router-dom';
+
 import Logo from '../Global/images/logo_header.png';
 import ListaActuacions from '../Modals/ListaActuacion'
 import '../Global/css/NavBarSga.css';
@@ -14,7 +16,8 @@ class NavBarSga extends React.Component {
 		super(props)
 		this.state = {
 			logged: true,
-			administracion: props.administracion
+			administracion: props.administracion,
+			title: props.title
 		}
 	}
 
@@ -29,6 +32,8 @@ class NavBarSga extends React.Component {
 		return (
 			<nav className="navBar">
 				<img src={Logo} className="logo-navbar" alt="logo" />
+				<h4 className='vcenter'>{this.state.title}</h4>
+
 				<div>
 					{this.state.administracion === false ?
 						<div className="button-home-user2">
@@ -43,7 +48,9 @@ class NavBarSga extends React.Component {
 								<li className="item-button-home-user2"><ListaActuacions icon="filter_3" tipo="ext" /></li>
 							</Dropdown>
 						</div> : <ul className="button-home-user-text">
-							<li className="link-admin-nav" onClick={() => this.props.history.push("/administracion/users")}>Usuarios</li>
+							<li className="link-admin-nav"
+							// onClick={() => this.props.history.push("/administracion/users")}
+							>Usuarios</li>
 						</ul>
 					}
 					<div className="button-home-user">
@@ -53,12 +60,18 @@ class NavBarSga extends React.Component {
 								<div className="button-home-user-text">{userlogged.login}</div>
 							</div>
 						}>
-							<NavItem className="item-button-home-user" onClick={() => this.props.history.push("/administracion/users")}><Icon>settings</Icon>Administración</NavItem>
-							<NavItem className="item-button-home-user" onClick={() => this.props.history.push("/home")}><Icon>home</Icon>Home</NavItem>
+							<NavItem className="item-button-home-user"
+								onClick={() => this.props.history.push("/administracion/users")}
+							><Icon>settings</Icon>Administración</NavItem>
+							<NavItem className="item-button-home-user"
+								onClick={() => this.props.history.push("/home")}
+							><Icon>home</Icon>Home</NavItem>
 							<NavItem className="item-button-home-user"><Icon>description</Icon>Documentación</NavItem>
 							<NavItem className="item-button-home-user"><Icon>content_paste</Icon>Informes</NavItem>
 							<NavItem className="item-button-home-user" divider />
-							<NavItem className="item-button-home-user" onClick={() => this.cerrarSession()}><Icon>close</Icon>Logout</NavItem>
+							<NavItem className="item-button-home-user"
+								onClick={() => this.cerrarSession()}
+							><Icon>close</Icon>Logout</NavItem>
 						</Dropdown>
 					</div>
 				</div>
@@ -68,4 +81,5 @@ class NavBarSga extends React.Component {
 }
 
 
-export default NavBarSga;
+// export default NavBarSga; 
+export default withRouter(NavBarSga);

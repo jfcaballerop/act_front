@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 //Components
-// import Header from './Global/Header';
+import Content from './Global/Content';
+import Header from './Global/Header'
+import FooterApp from './Global/FooterApp'
+import './App.css'
 
-import './App.css';
-import Login from './Login'
-import Home from './Home'
-import AdminUser from './AdminUser'
-import { Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory'
 //import Error404 from '../services/Error404'
 
-const history = createBrowserHistory()
+// const SomeComponent = withRouter(props => <App {...props} />);
+
 
 class App extends Component {
 
@@ -22,27 +22,27 @@ class App extends Component {
     }
   }
 
+  static PropTypes = {
+    children: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
 
-  componentWillMount() {
-    if (!this.state.session_user) {
-      history.push('/')
-    }
-  }
 
-  /*<Route component={Error404} />*/
+
   render() {
+    const { children, match, location, history } = this.props;
+
     return (
-      <Router history={history}>
-        <div>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/administracion/users" component={AdminUser} />
-          <Route exact path="/administracion/users/:method" component={AdminUser} />
-          <Route exact path="/administracion/users/:method/:id" component={AdminUser} />
-        </div>
-      </Router>
+      <div className="App">
+        {location.pathname !== '/' ? <Header /> : false}
+        <Content body={children} />
+        {location.pathname !== '/' ? <FooterApp /> : false}
+      </div>
+
     );
   }
 }
 
-export default App;
+export default withRouter(App);

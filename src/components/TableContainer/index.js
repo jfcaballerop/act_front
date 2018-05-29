@@ -43,7 +43,7 @@ class TableContainer extends Component {
 	}
 
 	render() {
-		let self = this
+		// let self = this
 		return (
 			<div>
 				<table className="table-users-admin">

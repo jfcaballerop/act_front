@@ -15,21 +15,21 @@ class ContentListAdmin extends React.Component {
 
 	}
 
-	componentDidMount(){
-		this.setState({listaContenido: this.getUsersList()})
+	componentDidMount() {
+		this.setState({ listaContenido: this.getUsersList() })
 	}
 
-	getUsersList =  () =>{
-		axios.get(ROUTESNAME.showusers(),ROUTESNAME.getSessionToken('sessionUserSga'))
-		.then((response) => {
-			if(response.status === 200){
-				this.setState({listaContenido: response.data})
-			}
-		});
+	getUsersList = () => {
+		axios.get(ROUTESNAME.showusers(), ROUTESNAME.getSessionToken('sessionUserSga'))
+			.then((response) => {
+				if (response.status === 200) {
+					this.setState({ listaContenido: response.data })
+				}
+			});
 	}
 
 	render() {
-		let self = this
+		// let self = this
 		return (
 			<div>
 				{ this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido}/> : "" }
