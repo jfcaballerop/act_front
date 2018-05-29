@@ -17,11 +17,11 @@ const AppRoutes = () =>
 
     <App>
         <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/administracion/users" component={AdminUser} />
-            <Route exact path="/administracion/users/:method" component={AdminUser} />
-            <Route exact path="/administracion/users/:method/:id" component={AdminUser} />
+            <Route path="/home" component={Home} />
+            <Route path="/administracion/users" component={AdminUser} />
+            <Route path="/administracion/users/:method" component={AdminUser} />
+            <Route path="/administracion/users/:method/:id" component={AdminUser} />
+            <Route path="/" something="foo" component={Login} />
             <Route component={Page404} />
 
         </Switch>
