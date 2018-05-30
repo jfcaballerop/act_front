@@ -27,7 +27,7 @@ const AppRoutes = () =>
             <Route path="/administracion/users/:method/:id" component={AdminUser} />
             <Route path="/administracion/users/:method" component={AdminUser} />
             <Route path="/administracion/users" component={AdminUser} />
-            <Route path="/" something="foo" component={Login} />
+            <Route path="/" component={Login} />
             <Route component={Page404} />
 
         </Switch>
