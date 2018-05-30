@@ -7,6 +7,8 @@ import SearchHeader from '../Generics/SearchHeader';
 import Header from '../Global/Header';
 import axios from 'axios';
 import ROUTESNAME from '../../services/routesName.js'
+import { withRouter } from 'react-router-dom';
+
 
 class AdminUser extends React.Component {
 
@@ -17,15 +19,20 @@ class AdminUser extends React.Component {
 		}	
 	}
 
+	componentWillReceiveProps(cosa){
+		this.setState({algo: cosa})
+	}
+
 	getComponentAdmin = () => {
+		const { location, history, match } = this.props;
 		let header, footer, body, objeto
-		if (this.props.match.params.id != undefined){
+		if (match.params.id != undefined){
 			header=<h1>- Editar usuario -</h1>
-			axios.get(ROUTESNAME.getuser(this.props.match.params.id),ROUTESNAME.getSessionToken('sessionUserSga'))
+			axios.get(ROUTESNAME.getuser(match.params.id),ROUTESNAME.getSessionToken('sessionUserSga'))
 				.then((response) => {
 					if(response.status === 200){
 						objeto = response.data
-						body = <ConentNewUpdateAdmin history={this.props.history} usuario={objeto} />
+						body = <ConentNewUpdateAdmin usuario={objeto} />
 						this.setState({objeto: 
 							<ContentData 
 								header={header}
@@ -37,19 +44,19 @@ class AdminUser extends React.Component {
 				});
 				footer = ""
 
-		} else if (this.props.match.params.method === "new"){
+		} else if (match.params.method === "new"){
 			header=<h1>- Nuevo usuario -</h1>
-			body =  <ConentNewUpdateAdmin history={this.props.history} />
+			body =  <ConentNewUpdateAdmin />
 			footer = ""
 		}
 		else{
-			body = <ConentListAdmin history={this.props.history} />
+			body = <ConentListAdmin />
 			header = <SearchHeader title="Filtrar usuario:" />
 			footer = ""
 		}
 
 		this.setState({objeto: 
-			<ContentData 
+			<ContentData
 				header={header}
 				body={body}
 				footer={footer}
@@ -60,11 +67,10 @@ class AdminUser extends React.Component {
 	render() {
 		return (
 			<div className="content">
-				<Header history={this.props.history} administracion={true}/>
 				{this.state.objeto === 0 ?  this.getComponentAdmin() : this.state.objeto }
 			</div>
 		);
 	}
 }
 
-export default AdminUser;
+export default withRouter(AdminUser);

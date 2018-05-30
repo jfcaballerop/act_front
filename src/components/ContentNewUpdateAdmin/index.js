@@ -11,9 +11,29 @@ class ContentNewUpdateAdmin extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			option_select: (this.props.usuario.roles.length > 0 ? this.props.usuario.roles[0].code : ""),
-			user: this.props.usuario
+			option_select: this.getRoleOption,
+			user: this.getUserDefault
 		}	
+	}
+
+	getRoleOption = () => {
+		if(this.props.usuario)
+			this.props.usuario.roles[0].code
+		else 
+		 	""
+	}
+
+	getUserDefault = () => {
+		if(this.props.usuario)
+			this.props.usuario
+		else
+			return ({
+				name:"",
+				login:"", 
+				password: "",
+				password_confirmation: "", 
+				roles:""
+			})
 	}
 
 	submit = event => {
@@ -70,8 +90,6 @@ class ContentNewUpdateAdmin extends React.Component {
 	}
 
 	render() {
-		let name = this.state.user.name.toString()
-		
 		return (
 			<div> 
 				{this.props.header}

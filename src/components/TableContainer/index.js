@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Pagination, Modal, Icon} from 'react-materialize';
+import { withRouter } from 'react-router-dom';
 import '../Global/css/TableContainer.css';
 import axios from 'axios';
 import ROUTESNAME from '../../services/routesName.js'
@@ -13,6 +14,7 @@ class TableContainer extends Component {
 			lista: props.lista,
 			pagina: 1
 		}
+		const { location, history } = this.props;
 	}
 
 	changeList = page => {
@@ -45,6 +47,7 @@ class TableContainer extends Component {
 	render() {
 		// let self = this
 		return (
+
 			<div>
 				<table className="table-users-admin">
 					<tbody>
@@ -89,4 +92,4 @@ class TableContainer extends Component {
 	}
 }
 
-export default TableContainer;
+export default withRouter(TableContainer);
