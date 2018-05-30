@@ -8,14 +8,14 @@ h1{
 	text-align: center;
 }
 
-.admin-user-form-container-new{
+.section-data-form-container-new{
 	width:100%;
 	text-align: center;
 	display: flex;
 	flex-flow: column;
 }
 
-.admin-user-form-container-new p {
+.section-data-form-container-new p {
 	font-size: 16px;
 	color:white;
 	text-align: center;

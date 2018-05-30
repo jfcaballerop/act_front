@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 import NavBarSga from '../NavBarSga'
 import ConentListAdmin from '../ContentListAdmin'
 import ConentNewUpdateAdmin from '../ContentNewUpdateAdmin'
@@ -12,11 +14,11 @@ import { withRouter } from 'react-router-dom';
 
 class AdminUser extends React.Component {
 
-	constructor(props){
+	constructor(props) {
 		super(props)
 		this.state = {
 			objeto: 0
-		}	
+		}
 	}
 
 	componentWillReceiveProps(cosa){
@@ -30,7 +32,7 @@ class AdminUser extends React.Component {
 			header=<h1>- Editar usuario -</h1>
 			axios.get(ROUTESNAME.getuser(match.params.id),ROUTESNAME.getSessionToken('sessionUserSga'))
 				.then((response) => {
-					if(response.status === 200){
+					if (response.status === 200) {
 						objeto = response.data
 						body = <ConentNewUpdateAdmin usuario={objeto} />
 						this.setState({objeto: 
@@ -42,8 +44,7 @@ class AdminUser extends React.Component {
 							})
 					}
 				});
-				footer = ""
-
+			footer = ""
 		} else if (match.params.method === "new"){
 			header=<h1>- Nuevo usuario -</h1>
 			body =  <ConentNewUpdateAdmin />
@@ -54,6 +55,7 @@ class AdminUser extends React.Component {
 			header = <SearchHeader title="Filtrar usuario:" />
 			footer = ""
 		}
+
 
 		this.setState({objeto: 
 			<ContentData
@@ -72,5 +74,6 @@ class AdminUser extends React.Component {
 		);
 	}
 }
+
 
 export default withRouter(AdminUser);

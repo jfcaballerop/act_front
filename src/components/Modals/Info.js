@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'react-materialize'
+import { Link } from 'react-router-dom'
 
 
 class Info extends React.Component {
@@ -35,7 +36,7 @@ class Info extends React.Component {
 							return (
 								<tr key={index}>
 									<td >{index}</td>
-									<td > {item.code} </td>
+									<td ><Link to={"/actuaciones/cons_ord/" + item._id.$oid} >{item.code}</Link> {item.code} </td>
 									<td > {item.desc} </td>
 								</tr>
 							)
