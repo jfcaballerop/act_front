@@ -56,6 +56,22 @@ class GenericListData extends React.Component {
 			console.log('State ListaActuacion1', this.state)
 		}
 	}
+	handleAction = (id, action, e) => {
+		e.preventDefault()
+		console.log('handleAction', id, action)
+		switch (action) {
+			case 'show':
+
+				break;
+
+			default:
+				break;
+		}
+		this.setState(prevState => ({
+			id: id,
+			action: action
+		}));
+	}
 
 
 	render() {
@@ -63,7 +79,7 @@ class GenericListData extends React.Component {
 			<div className="section-data">
 				<header><SearchHeader title="Filtrar:" /></header>
 				<section>
-					{this.state.lista ? <InfoModal items={this.state.lista} /> : ""}
+					{this.state.lista ? <InfoModal handler={this.handleAction} items={this.state.lista} /> : ""}
 				</section>
 				<footer></footer>
 				{/* <Header history={this.props.history} administracion={true}/> */}
