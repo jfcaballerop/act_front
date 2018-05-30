@@ -30,7 +30,7 @@ class Header extends React.Component {
     componentDidMount() {
         const { children, match, location, history } = this.props;
 
-        console.log(this.state.path)
+        // console.log(this.state.path)
         switch (this.state.path) {
             case "/Home":
                 this.setState((prevState, props) => ({
@@ -54,7 +54,7 @@ class Header extends React.Component {
         const { children, match, location, history } = this.props;
 
         const { title, path } = this.props;
-        console.log('** HOME **::', title);
+        // console.log('** HOME **::', title);
         return (
             <div className="Header">
                 <NavBarSga title={title} history={this.state.history} administracion={this.state.administracion} />

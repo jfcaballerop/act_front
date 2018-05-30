@@ -33,44 +33,61 @@ class GenericListData extends React.Component {
 		axios.get(ROUTESNAME.getActConsOrd(), ROUTESNAME.getSessionToken('sessionUserSga'))
 			.then((response) => {
 				if (response.status === 200) {
-					this.setState({ lista: response.data })
+					this.setState((prevState, props) => ({
+						lista: response.data
+					}))
 				} else {
-					console.log('Error response')
+					// console.log('Error response')
 				}
 
-				console.log('State ListaActuacion2', this.state)
+				// console.log('State ListaActuacion2', this.state)
+
+			});
+	}
+	delActConsOrdList = (item) => {
+		axios.delete(ROUTESNAME.delActConsOrd(item._id.$oid), ROUTESNAME.getSessionToken('sessionUserSga'))
+			.then((response) => {
+				if (response.status === 204) {
+					// OK
+					var array = [...this.state.lista]; // make a separate copy of the array
+					var index = array.indexOf(item)
+					array.splice(index, 1);
+					window.Materialize.toast('Actuacion borrada: ' + item.code, 4000)
+					this.setState({ lista: array });
+				} else {
+
+					// console.log('Error response')
+				}
+
+				// console.log('State ListaActuacion2', this.state)
 
 			});
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount GenericListData');
+		// console.log('componentDidMount GenericListData');
 		if (this.state.tipo === "obra") {
 			this.setState({ lista: lista_obr, titulo: "Obra" })
 		} else if (this.state.tipo === "ext") {
-			console.log("entra")
+			// console.log("entra")
 			this.setState({ lista: lista_ext, titulo: "Conservación Extraordinaria" })
 		} else {
 			this.getActConsOrdList()
 			this.setState({ titulo: "Conservación Ordinaria" })
-			console.log('State ListaActuacion1', this.state)
+			// console.log('State ListaActuacion1', this.state)
 		}
 	}
-	handleAction = (id, action, e) => {
+	handleAction = (item, action, e) => {
 		e.preventDefault()
-		console.log('handleAction', id, action)
+		// console.log('handleAction', item._id.$oid, action)
 		switch (action) {
-			case 'show':
-
+			case 'delete':
+				this.delActConsOrdList(item);
 				break;
 
 			default:
 				break;
 		}
-		this.setState(prevState => ({
-			id: id,
-			action: action
-		}));
 	}
 
 

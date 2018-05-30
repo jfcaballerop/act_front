@@ -30,3 +30,18 @@ h3.vcenter {
 h4.vcenter {
 	margin: 0;
 }
+
+.link-show{
+		color:#ff9800;
+		
+	}
+	.link-delete{
+		color:#ff9800;
+		/* color:#d50000; */
+		
+	}
+	.link-edit{
+		color:#ff9800;
+		/* color:#fff; */
+
+}

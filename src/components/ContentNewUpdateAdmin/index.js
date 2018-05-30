@@ -115,7 +115,7 @@ class ContentNewUpdateAdmin extends React.Component {
 	handlerForm = (event) => {
 		var newState = this.state.usuario;
 		newState[event.target.name] = event.target.value;
-		console.log(newState)
+		// console.log(newState)
 		this.setState(newState);
 	}
 

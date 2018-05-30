@@ -30,15 +30,15 @@ class Maps extends React.Component {
   }
  
   onDragEnd(e) {
-    console.log('onDragEnd', e);
+    // console.log('onDragEnd', e);
   }
  
   onCloseClick() {
-    console.log('onCloseClick');
+    // console.log('onCloseClick');
   }
  
   onClick(e) {
-    console.log('onClick', e);
+    // console.log('onClick', e);
   }
 
 

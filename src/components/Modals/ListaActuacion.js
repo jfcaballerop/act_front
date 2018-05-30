@@ -25,10 +25,10 @@ class ListaActuacion extends React.Component {
 				if (response.status === 200) {
 					this.setState({ lista: response.data })
 				} else {
-					console.log('Error response')
+					// console.log('Error response')
 				}
 
-				console.log('State ListaActuacion2', this.state)
+				// console.log('State ListaActuacion2', this.state)
 
 			});
 	}
@@ -37,17 +37,17 @@ class ListaActuacion extends React.Component {
 		if (this.state.tipo === "obra") {
 			this.setState({ lista: lista_obr, titulo: "Obra" })
 		} else if (this.state.tipo === "ext") {
-			console.log("entra")
+			// console.log("entra")
 			this.setState({ lista: lista_ext, titulo: "Conservación Extraordinaria" })
 		} else {
 			this.getActConsOrdList()
 			this.setState({ titulo: "Conservación Ordinaria" })
-			console.log('State ListaActuacion1', this.state)
+			// console.log('State ListaActuacion1', this.state)
 		}
 	}
 
 	render() {
-		console.log('Render::', this.state.lista)
+		// console.log('Render::', this.state.lista)
 		return (
 			<Modal
 				header={this.state.titulo}
