@@ -35,8 +35,8 @@ class ContentListAdmin extends React.Component {
 		// let self = this
 		return (
 			<div>
-				{ this.state.listaContenido ? <TableContainer lista={this.state.listaContenido}/> : "" }
-				<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new')} type="submit" >Nuevo usuario</Button>
+				{ this.state.listaContenido ? <TableContainer handlerUpdateParent={this.props.handlerUpdateParent} lista={this.state.listaContenido}/> : "" }
+				<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new',this.props.handlerUpdateParent())} type="submit" >Nuevo usuario</Button>
 			</div>
 		);
 	}

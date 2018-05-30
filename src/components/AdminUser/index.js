@@ -1,6 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-
 import NavBarSga from '../NavBarSga'
 import ConentListAdmin from '../ContentListAdmin'
 import ConentNewUpdateAdmin from '../ContentNewUpdateAdmin'
@@ -21,22 +19,23 @@ class AdminUser extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps(cosa){
-		this.setState({algo: cosa})
+	updateParent = () => {
+
+		this.setState({objeto: 0})
 	}
 
 	getComponentAdmin = () => {
 		const { location, history, match } = this.props;
-		let header, footer, body, objeto
+		let header, footer, body, usuario
 		if (match.params.id != undefined){
 			header=<h1>- Editar usuario -</h1>
 			axios.get(ROUTESNAME.getuser(match.params.id),ROUTESNAME.getSessionToken('sessionUserSga'))
 				.then((response) => {
 					if (response.status === 200) {
-						objeto = response.data
-						body = <ConentNewUpdateAdmin usuario={objeto} />
+						usuario = response.data
+						body = <ConentNewUpdateAdmin handlerUpdateParent={this.updateParent} usuario={usuario} />
 						this.setState({objeto: 
-							<ContentData 
+							<ContentData
 								header={header}
 								body={body}
 								footer={footer}
@@ -47,11 +46,11 @@ class AdminUser extends React.Component {
 			footer = ""
 		} else if (match.params.method === "new"){
 			header=<h1>- Nuevo usuario -</h1>
-			body =  <ConentNewUpdateAdmin />
+			body =  <ConentNewUpdateAdmin handlerUpdateParent={this.updateParent}/>
 			footer = ""
 		}
 		else{
-			body = <ConentListAdmin />
+			body = <ConentListAdmin handlerUpdateParent={this.updateParent} />
 			header = <SearchHeader title="Filtrar usuario:" />
 			footer = ""
 		}

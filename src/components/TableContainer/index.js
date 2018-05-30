@@ -66,14 +66,14 @@ class TableContainer extends Component {
 								<td>{row.roles_val.map((role) => role.code)}</td>
 								<td colSpan="3">
 									<tr colSpan="3" className="tr-options-admin">
-										<td><Button className="new-user-button options-table-admin" onClick={() => history.push('/administracion/users/edit/' + row._id.$oid)}><Icon>edit</Icon>Editar</Button></td>
+										<td><Button className="new-user-button options-table-admin" onClick={() => history.push('/administracion/users/edit/' + row._id.$oid, this.props.handlerUpdateParent())}><Icon>edit</Icon>Editar</Button></td>
 
 										<td>
 											<Modal
 												header="Borrando usuario"
 												actions={
 													<footer>
-														<Button onClick={() => this.deleteItem(row)} className="new-user-button options-table-admin">Aceptar</Button>
+														<Button modal="close" onClick={() => this.deleteItem(row)} className="new-user-button options-table-admin">Aceptar</Button>
 														<Button modal="close" className="new-user-button options-table-admin">Cancelar</Button>
 													</footer>}
 												trigger={<Button className="new-user-button options-table-admin"><Icon>delete</Icon>borrar</Button>}>

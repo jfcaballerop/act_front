@@ -5,40 +5,63 @@ import ROUTESNAME from '../../services/routesName.js'
 import '../Global/css/ContentNewUpdateAdmin.css';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import { withRouter } from 'react-router-dom';
 
 class ContentNewUpdateAdmin extends React.Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			option_select: this.getRoleOption,
-			user: this.getUserDefault
+			option_select: this.getRoleOption(),
+			usuario: this.getUserDefault(),
+			updated: this.getUpdateOrNew()
 		}	
 	}
 
+	getUpdateOrNew = () => {
+		if(this.props.usuario){
+			return true
+		}else{
+			return false
+		}
+	}
+
 	getRoleOption = () => {
-		if(this.props.usuario)
-			this.props.usuario.roles[0].code
-		else 
-		 	""
+		if(this.props.usuario){
+			if(this.props.usuario.roles.length > 0) {
+				return ""
+			}
+			else{
+				return this.props.usuario.roles
+			}
+		}else{
+		 	return ""
+		} 
 	}
 
 	getUserDefault = () => {
-		if(this.props.usuario)
-			this.props.usuario
-		else
+		if(this.props.usuario){
+			this.setState({updated: true})
+			return this.props.usuario
+		}
+		else{
+			this.setState({updated: false})
 			return ({
+				_id:{
+					$oid:""
+				},
 				name:"",
 				login:"", 
 				password: "",
 				password_confirmation: "", 
 				roles:""
 			})
+		}
 	}
 
 	submit = event => {
 		event.preventDefault();
-		if (this.props.usuario === undefined) {
+		if (!this.state.updated) {
 			axios.post(ROUTESNAME.newuser(), {
 				user: {
 					name: this.refs.name.value,
@@ -56,12 +79,14 @@ class ContentNewUpdateAdmin extends React.Component {
 						this.refs.password_confirmation.value = ""
 						this.setState({ option_select: "" })
 						window.Materialize.toast('Usuario creado con exito', 4000)
+						this.props.history.push('/administracion/users')
+						this.props.handlerUpdateParent()
 					}
 				}).catch(error => {
 					window.Materialize.toast(error, 4000)
 				});
 		} else {
-			axios.put(ROUTESNAME.getuser(this.state.user.id.$oid), {
+			axios.put(ROUTESNAME.getuser(this.state.usuario.id.$oid), {
 				user: {
 					name: this.refs.name.value,
 					login: this.refs.login.value,
@@ -74,6 +99,7 @@ class ContentNewUpdateAdmin extends React.Component {
 					if (response.status === 200) {
 						window.Materialize.toast('Usuario modificado con exito', 4000)
 						this.props.history.push('/administracion/users')
+						this.props.handlerUpdateParent()
 					}
 				}).catch(error => {
 					window.Materialize.toast(error, 4000)
@@ -87,7 +113,7 @@ class ContentNewUpdateAdmin extends React.Component {
 	}
 
 	handlerForm = (event) => {
-		var newState = this.state.user;
+		var newState = this.state.usuario;
 		newState[event.target.name] = event.target.value;
 		console.log(newState)
 		this.setState(newState);
@@ -99,9 +125,9 @@ class ContentNewUpdateAdmin extends React.Component {
 				{this.props.header}
 				<form className="section-data-form-container-new" onSubmit={this.submit}>
 					<p>Nombre</p>
-					<input className="input-login input-field-admin" type="text" required name="name" ref="name" value={this.state.user.name} onChange={this.handlerForm} />
+					<input className="input-login input-field-admin" type="text" required name="name" ref="name" value={this.state.usuario.name} onChange={this.handlerForm} />
 					<p>Login</p>
-					<input className="input-login input-field-admin" type="text" required name="login" ref="login" value={this.state.user.login} onChange={this.handlerForm} />
+					<input className="input-login input-field-admin" type="text" required name="login" ref="login" value={this.state.usuario.login} onChange={this.handlerForm} />
 					<p>Password</p>
 					<input className="input-login input-field-admin" type="password" required name="password" ref="password" />
 					<p>Re-password</p>
@@ -117,11 +143,11 @@ class ContentNewUpdateAdmin extends React.Component {
 							{ value: 'admin', label: 'admin' },
 						]}
 					/>
-					<Button className="new-user-button new-user-button-submit" type="submit" >{this.state.user ? "Actualizar usuario" : "Crear usuario"}</Button>
+					<Button className="new-user-button new-user-button-submit" type="submit" >{this.state.updated ? "Actualizar usuario" : "Crear usuario"}</Button>
 				</form>
 			</div>
 		);
 	}
 }
 
-export default ContentNewUpdateAdmin;
+export default withRouter(ContentNewUpdateAdmin);

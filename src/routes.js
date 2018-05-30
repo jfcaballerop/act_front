@@ -21,9 +21,9 @@ const AppRoutes = () =>
             <Route path="/home" component={Home} />
             <Route path="/actuaciones/cons_ord" component={GenericList} />
             <Route path="/actuaciones/cons_ord/:id" component={GenericList} />
-            <Route path="/administracion/users" component={AdminUser} />
-            <Route path="/administracion/users/:method" component={AdminUser} />
             <Route path="/administracion/users/:method/:id" component={AdminUser} />
+            <Route path="/administracion/users/:method" component={AdminUser} />
+            <Route path="/administracion/users" component={AdminUser} />
             <Route path="/" something="foo" component={Login} />
             <Route component={Page404} />
 
