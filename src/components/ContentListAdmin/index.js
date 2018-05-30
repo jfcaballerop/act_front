@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Button } from 'react-materialize';
 import TableContainer from '../TableContainer';
 import ROUTESNAME from '../../services/routesName.js'
+import { withRouter } from 'react-router-dom';
+
 
 class ContentListAdmin extends React.Component {
 
@@ -12,6 +14,7 @@ class ContentListAdmin extends React.Component {
 		this.state = {
 			listaContenido: ""
 		}
+		const { location, history } = this.props;
 
 	}
 
@@ -32,11 +35,11 @@ class ContentListAdmin extends React.Component {
 		// let self = this
 		return (
 			<div>
-				{ this.state.listaContenido ? <TableContainer history={this.props.history} lista={this.state.listaContenido}/> : "" }
+				{ this.state.listaContenido ? <TableContainer lista={this.state.listaContenido}/> : "" }
 				<Button className="new-user-button" onClick={() => this.props.history.push('/administracion/users/new')} type="submit" >Nuevo usuario</Button>
 			</div>
 		);
 	}
 }
 
-export default ContentListAdmin;
+export default withRouter(ContentListAdmin);
