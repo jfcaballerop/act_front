@@ -6,10 +6,6 @@ import Logo from '../Global/images/logo_header.png';
 import ListaActuacions from '../Modals/ListaActuacion'
 import '../Global/css/NavBarSga.css';
 
-const userlogged = {
-	login: "Administrador"
-}
-
 class NavBarSga extends React.Component {
 
 	constructor(props) {
@@ -59,7 +55,7 @@ class NavBarSga extends React.Component {
 						<Dropdown className="dropdown-navbar" id="drop_user" trigger={
 							<div className="bloque_dropdown">
 								<Icon className="button-home-user-icon">assignment_ind</Icon>
-								<div className="button-home-user-text">{userlogged.login}</div>
+								<div className="button-home-user-text">Administrador</div>
 							</div>
 						}>
 							<NavItem className="item-button-home-user"

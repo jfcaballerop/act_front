@@ -51,7 +51,7 @@ class Info extends React.Component {
 												</div>
 											}
 											trigger={
-												<Link to={"#"} ><Icon>delete</Icon></Link>
+												<Link to={"#"} ><Icon >delete</Icon></Link>
 											}>
 										</Modal>
 										<Link onClick={(e) => this.props.handler(item._id.$oid, 'show', e)} to={"/actuaciones/cons_ord/show/" + item._id.$oid} ><Icon>insert_drive_file</Icon></Link>

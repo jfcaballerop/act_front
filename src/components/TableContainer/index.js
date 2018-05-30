@@ -76,7 +76,7 @@ class TableContainer extends Component {
 														<Button modal="close" onClick={() => this.deleteItem(row)} className="new-user-button options-table-admin">Aceptar</Button>
 														<Button modal="close" className="new-user-button options-table-admin">Cancelar</Button>
 													</footer>}
-												trigger={<Button className="new-user-button options-table-admin"><Icon>delete</Icon>borrar</Button>}>
+												trigger={<Button className="new-user-button options-table-admin"  ><Icon>delete</Icon>borrar</Button>}>
 												<p>¿Estas seguro de que quieres elimiar al usuario <b>{row.login}</b>?</p>
 											</Modal>
 
